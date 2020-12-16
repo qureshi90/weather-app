@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: serif;
+  font-family: "Times New Roman";
 }
 
 main {
@@ -14,7 +14,32 @@ main {
 }
 
 .App {
-  background-image: url("img/app.jpg");
+  background-image: linear-gradient(to right,
+      rgba(255, 0, 0, 0.52),
+      rgba(0, 195, 255, 0.73)),
+    url("img/app.jpg");
+  background-repeat: no-repeat;
+  transition: 0.2s ease;
+}
+
+.App.hot {
+  background-image: linear-gradient(to bottom,
+      rgba(255, 16, 16, 0.52),
+      rgba(0, 0, 0, 0.73)),
+    url("img/hot.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.2s ease;
+}
+
+.App.cold {
+  background-image: linear-gradient(to bottom,
+      rgba(0, 255, 213, 0.52),
+      rgba(0, 0, 0, 0.73)),
+    url("img/cold.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.2s ease;
 }
 
 .search-container {
@@ -45,7 +70,7 @@ main {
   font-size: 30px;
   text-align: center;
   text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
-  font-weight: 700;
+  font-weight: bold;
 }
 
 .location-container .date {
@@ -65,7 +90,7 @@ main {
   margin: 30px auto;
   padding: 15px 25px;
   font-size: 100px;
-  font-weight: 700;
+  font-weight: bold;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   box-shadow: 3px 3px rgba(55, 55, 55, 0.7);
@@ -75,6 +100,6 @@ main {
 .weather-container .weather {
   color: white;
   font-size: 50px;
-  font-weight: 700;
+  font-weight: bold;
   text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
 }

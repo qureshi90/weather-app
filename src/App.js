@@ -33,7 +33,14 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className={
+      typeof weather.main != "undefined"
+        ? weather.main.temp > 18 
+          ? "App hot" 
+          : "App cold"
+        : "App"
+      }
+    >
       <main>
         <div className="search-container">
           <input 
