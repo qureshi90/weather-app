@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: century, georgia;
+  font-family: serif;
 }
 
 main {
@@ -45,6 +45,7 @@ main {
   font-size: 30px;
   text-align: center;
   text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
+  font-weight: 700;
 }
 
 .location-container .date {
@@ -52,4 +53,28 @@ main {
   font-size: 20px;
   text-align: center;
   text-shadow: 3px 3px rgba(55, 55, 55, 0.7)
+}
+
+.weather-container {
+  text-align: center;
+}
+
+.weather-container .temperature {
+  color : white;
+  display: inline-block;
+  margin: 30px auto;
+  padding: 15px 25px;
+  font-size: 100px;
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 3px 3px rgba(55, 55, 55, 0.7);
+  text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
+}
+
+.weather-container .weather {
+  color: white;
+  font-size: 50px;
+  font-weight: 700;
+  text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
 }

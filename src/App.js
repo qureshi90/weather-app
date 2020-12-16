@@ -54,8 +54,8 @@ function App() {
             </div>
             
             <div className="weather-container">
-              <div className="temp">
-                {Math.round(weather.main.temp)}°c
+              <div className="temperature">
+                {Math.round(weather.main.temp)}<sup>°C</sup>
               </div>
               <div className="weather">{weather.weather[0].main}</div>
             </div>
