@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <main>
-        <div className="search-box">
+        <div className="search-container">
           <input 
             type="text"
             className="search-bar"
