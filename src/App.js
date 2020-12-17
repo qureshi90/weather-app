@@ -8,16 +8,18 @@ const api = {
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
+  const [icon, setIcon] = useState('01d');
 
-  const search = e => {
+  const search = (e) => {
     if (e.key === "Enter") {
       fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-      .then(res => res.json())
-      .then(result => {
-        setWeather(result);
-        setQuery('');
-        console.log(result);
-      });
+        .then(res => res.json())
+        .then(result => {
+          setWeather(result);
+          setQuery('');
+          setIcon(result.weather[0].icon);
+          console.log(result);
+        });
     }
   }
 
@@ -47,7 +49,7 @@ function App() {
           <input 
             type="text"
             className="search-bar"
-            placeholder="Search..."
+            placeholder="Enter City Name..."
             onChange={e => setQuery(e.target.value)}
             value={query}
             onKeyPress={search}
@@ -57,15 +59,33 @@ function App() {
         {(typeof weather.main != "undefined") ? (
           <div>
             <div className="location-container">
-              <div className="location">{weather.name}, {weather.sys.country}</div>
-              <div className="date">{dateBuilder(new Date())}</div>
+              <div className="location">
+                {weather.name}, {weather.sys.country}
+              </div>
+              <div className="date">
+                {dateBuilder(new Date())}
+              </div>
             </div>
             
             <div className="weather-container">
               <div className="temperature">
                 {Math.round(weather.main.temp)}°C
               </div>
-              <div className="weather">{weather.weather[0].main}</div>
+              <div className="weather">
+                {weather.weather[0].main}
+              </div>
+            </div>
+            <div className="extras">
+              <div>{weather.main.humidity}</div>
+              <div>{weather.main.pressure}</div>
+              <div>{weather.wind.speed} m/s</div>
+              <div className="icon">
+                {icon.length > 0 && 
+                  <div>
+                    <img src={ 'http://openweathermap.org/img/w/' + icon + '.png' } alt="weather-icon"/>
+                  </div>
+                }
+              </div>
             </div>
           </div>
         ) : ('')}
