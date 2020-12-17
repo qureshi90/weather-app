@@ -8,7 +8,8 @@ const api = {
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
-  const [icon, setIcon] = useState('01d');
+  const [icon, setIcon] = useState('');
+  const [forecast, setForecast] = useState({});
 
   const search = (e) => {
     if (e.key === "Enter") {
@@ -19,6 +20,13 @@ function App() {
           setQuery('');
           setIcon(result.weather[0].icon);
           console.log(result);
+        });
+      
+      fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
+        .then(resp => resp.json())
+        .then(result1 => {
+          setForecast(result1);
+          console.log(result1);
         });
     }
   }
@@ -75,16 +83,13 @@ function App() {
                 {weather.weather[0].main}
               </div>
             </div>
+
             <div className="extras">
               <div>{weather.main.humidity}</div>
               <div>{weather.main.pressure}</div>
               <div>{weather.wind.speed} m/s</div>
               <div className="icon">
-                {icon.length > 0 && 
-                  <div>
-                    <img src={ 'http://openweathermap.org/img/w/' + icon + '.png' } alt="weather-icon"/>
-                  </div>
-                }
+                <img src={ 'http://openweathermap.org/img/w/' + icon + '.png' } alt="weather-icon" />
               </div>
             </div>
           </div>
