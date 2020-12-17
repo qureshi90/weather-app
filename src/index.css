@@ -1,13 +1,105 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Times New Roman";
+}
+
+main {
+  min-height: 100vh;
+  padding: 25px;
+}
+
+.App {
+  background-image: linear-gradient(to right,
+      rgba(255, 0, 0, 0.52),
+      rgba(0, 195, 255, 0.73)),
+    url("img/app.jpg");
+  background-repeat: no-repeat;
+  transition: 0.2s ease;
+}
+
+.App.hot {
+  background-image: linear-gradient(to bottom,
+      rgba(255, 16, 16, 0.52),
+      rgba(0, 0, 0, 0.73)),
+    url("img/hot.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.2s ease;
+}
+
+.App.cold {
+  background-image: linear-gradient(to bottom,
+      rgba(0, 255, 213, 0.52),
+      rgba(0, 0, 0, 0.73)),
+    url("img/cold.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.2s ease;
+}
+
+.search-container {
+  width: 100%;
+  margin: 0 0 75px;
+}
+
+.search-bar {
+  color: black;
+  font-size: 15px;
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.5);
+  transition: 0.4s ease;
+}
+
+.search-container .search-bar:focus {
+  background-color: white;
+}
+
+.location-container {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
+  font-weight: bold;
+}
+
+.location-container .date {
+  color : white;
+  font-size: 20px;
+  text-align: center;
+  text-shadow: 3px 3px rgba(55, 55, 55, 0.7)
+}
+
+.weather-container {
+  text-align: center;
+}
+
+.weather-container .temperature {
+  color : white;
+  display: inline-block;
+  margin: 30px auto;
+  padding: 15px 25px;
+  font-size: 100px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 3px 3px rgba(55, 55, 55, 0.7);
+  text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
+}
+
+.weather-container .weather {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
 }
