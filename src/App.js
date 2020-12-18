@@ -68,12 +68,20 @@ function App() {
           <div className="main-container">
 
             <div className="left-container">
-              <div className="icon">
-                <img src={ 'http://openweathermap.org/img/w/' + icon + '.png' } alt="weather-icon" />
+              <div>
+                <img 
+                  src={ 'http://openweathermap.org/img/w/' + icon + '.png' } 
+                  alt="weather condition icon" 
+                  className="weather-icon"
+                />
               </div>
 
               <div className="weather">
                 {weather.weather[0].main}
+              </div>
+
+              <div className="temperature">
+                {Math.round(weather.main.temp)}°C
               </div>
 
               <div className="location">
@@ -83,19 +91,21 @@ function App() {
               <div className="date">
                 {dateBuilder(new Date())}
               </div>
+            </div>
 
-              <div className="temperature">
-                {Math.round(weather.main.temp)}°C
-              </div>
+            <div>
+              <img src="https://media.giphy.com/media/h7Y3rfqV9qADYcOJaD/giphy.gif" alt="gif icon"/>
             </div>
             
             <div className="right-container">
               <div className="humidity">
                 Humidity <br/> {weather.main.humidity}%
               </div>
+
               <div className="pressure">
                 Pressure <br/> {weather.main.pressure} mBar
               </div>
+              
               <div className="wind">
                 Wind <br/> {Math.round((weather.wind.speed) * 15/8 )} km/h
               </div>
