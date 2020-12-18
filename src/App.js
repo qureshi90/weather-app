@@ -47,7 +47,7 @@ function App() {
     <div className={
       typeof weather.main != "undefined"
         ? weather.main.temp > 18 
-          ? "App hot" 
+          ? "App hot"
           : "App cold"
         : "App"
       }
@@ -65,33 +65,42 @@ function App() {
         </div>
 
         {(typeof weather.main != "undefined") ? (
-          <div>
-            <div className="location-container">
-              <div className="location">
-                {weather.name}, {weather.sys.country}
-              </div>
-              <div className="date">
-                {dateBuilder(new Date())}
-              </div>
-            </div>
-            
-            <div className="weather-container">
-              <div className="temperature">
-                {Math.round(weather.main.temp)}°C
-              </div>
-              <div className="weather">
-                {weather.weather[0].main}
-              </div>
-            </div>
+          <div className="main-container">
 
-            <div className="extras">
-              <div>{weather.main.humidity}</div>
-              <div>{weather.main.pressure}</div>
-              <div>{weather.wind.speed} m/s</div>
+            <div className="left-container">
               <div className="icon">
                 <img src={ 'http://openweathermap.org/img/w/' + icon + '.png' } alt="weather-icon" />
               </div>
+
+              <div className="weather">
+                {weather.weather[0].main}
+              </div>
+
+              <div className="location">
+                {weather.name}, {weather.sys.country}
+              </div>
+
+              <div className="date">
+                {dateBuilder(new Date())}
+              </div>
+
+              <div className="temperature">
+                {Math.round(weather.main.temp)}°C
+              </div>
             </div>
+            
+            <div className="right-container">
+              <div className="humidity">
+                Humidity <br/> {weather.main.humidity}%
+              </div>
+              <div className="pressure">
+                Pressure <br/> {weather.main.pressure} mBar
+              </div>
+              <div className="wind">
+                Wind <br/> {Math.round((weather.wind.speed) * 15/8 )} km/h
+              </div>
+            </div>
+
           </div>
         ) : ('')}
       </main>
