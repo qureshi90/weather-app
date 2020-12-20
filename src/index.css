@@ -149,7 +149,22 @@ main {
   flex-direction: row;
 }
 
-.zehr {
+.lower-container .forecast-temp {
   color: white;
   font-size: 30px;
+}
+
+.lower-container .forecast-icon {
+  color: white;
+  font-size: 30px;
+}
+
+.lower-container .forecast-time {
+  color: white;
+  font-size: 20px;
+}
+
+.lower-container .forecast-date {
+  color: white;
+  font-size: 20px;
 }

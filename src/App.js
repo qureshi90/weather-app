@@ -54,14 +54,14 @@ function App() {
 
   const dateBuilder = (d) => {
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
     let day = days[d.getDay()];
     let date = d.getDate();
     let month = months[d.getMonth()];
     let year = d.getFullYear();
 
-    return `${day}, ${month} ${date}, ${year}`
+    return `${day} ${month} ${date}, ${year}`
   }
 
   return (
@@ -92,7 +92,7 @@ function App() {
               <div className="left-container">
                 <div>
                   <img 
-                    src={ 'http://openweathermap.org/img/w/' + icon + '.png' } 
+                    src={ 'http://openweathermap.org/img/w/' + icon + '.png' }
                     alt="weather condition icon" 
                     className="weather-icon"
                   />
@@ -116,7 +116,10 @@ function App() {
               </div>
 
               <div>
-                <img src="https://media.giphy.com/media/h7Y3rfqV9qADYcOJaD/giphy.gif" alt="gif icon"/>
+                <img 
+                  src={icon === "50n" ? "https://media.giphy.com/media/h7Y3rfqV9qADYcOJaD/giphy.gif" : ""}
+                  alt="gif icon"
+                />
               </div>
               
               <div className="right-container">
@@ -145,9 +148,33 @@ function App() {
             </div>
             
             <div className="lower-container">
-              <div className="zehr">
-              {Math.round(forecast.list[0].main.temp)}
+
+              <div className="forecast-temp">
+                {Math.round(forecast.list[0].main.temp)}°C
               </div>
+
+              <div className="forecast-icon">
+                <img src={ 'http://openweathermap.org/img/w/' + icon + '.png' } alt="forecast icon"/>
+              </div>
+
+              <div className="forecast-time">
+                {(forecast.list[0].dt_txt).slice(11, 16)}
+              </div>
+
+              <div className="forecast-date">
+                {((forecast.list[0].dt_txt).split('-').join('/')).slice(0, 10)}
+              </div>
+
+            </div>
+
+            <div>
+              {forecast.list.map((x) => 
+                <div>
+                  <div>{Math.round(x.main.temp)}°C</div>
+                  <div>{(x.dt_txt).slice(11, 16)}</div>
+                  <div>{(x.dt_txt).split('-').join('/').slice(0, 10)}</div>
+                </div>
+              )}
             </div>
 
           </div>
