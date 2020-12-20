@@ -136,3 +136,20 @@ main {
   text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
   padding: 10px;
 }
+
+.right-container .icons {
+  width: 88px;
+  height: auto;
+  margin: 5px;
+  padding: 5px;
+}
+
+.right-container .i-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.zehr {
+  color: white;
+  font-size: 30px;
+}
