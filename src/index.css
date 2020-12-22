@@ -149,22 +149,45 @@ main {
   flex-direction: row;
 }
 
-.lower-container .forecast-temp {
+.bottom-slider .forecast-temp {
   color: white;
   font-size: 30px;
 }
 
-.lower-container .forecast-icon {
+.bottom-slider .forecast-time {
   color: white;
-  font-size: 30px;
+  font-size: 25px;
 }
 
-.lower-container .forecast-time {
+.bottom-slider .forecast-date {
   color: white;
   font-size: 20px;
 }
 
-.lower-container .forecast-date {
+.bottom-slider {
+  display: flex;
+  overflow-x: auto;
+}
+
+.bottom-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
   color: white;
-  font-size: 20px;
+  font-size: 25px;
+  background-color:rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.gif-animation {
+  width: 480px;
+  height: 480px;
+}
+
+img.gif-icon {
+  width: 400px;
 }

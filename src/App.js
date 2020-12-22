@@ -31,24 +31,6 @@ function App() {
           console.log(value1);
           console.log(value2);
         })
-      
-      /*
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-        .then(res => res.json())
-        .then(result => {
-          setWeather(result);
-          setQuery('');
-          setIcon(result.weather[0].icon);
-          console.log(result);
-        });
-      
-      fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
-        .then(resp => resp.json())
-        .then(result => {
-          setForecast(result);
-          console.log(result);
-        });
-      */
     }
   }
 
@@ -115,10 +97,24 @@ function App() {
                 </div>
               </div>
 
-              <div>
+              <div className="gif-animation">
                 <img 
-                  src={icon === "50n" ? "https://media.giphy.com/media/h7Y3rfqV9qADYcOJaD/giphy.gif" : ""}
-                  alt="gif icon"
+                  src={ icon === '02d' || icon === '02n' || icon === '03d' || icon === '03n' || icon === '04d' || icon === '04n' 
+                    ? "https://media.giphy.com/media/Qrdep630dyOucGsEsB/giphy.gif"
+                    : icon === '09d' || icon === '09n' || icon === '10d' || icon === '10n'
+                      ? "https://media.giphy.com/media/MDaMURfqSp7H1mQ1Ga/giphy.gif"
+                      : icon === '11d' || icon === '11n'
+                        ? "https://media.giphy.com/media/gdNti10T5nbcnOkIIg/giphy.gif"
+                        : icon === '13d' || icon === '13n'
+                          ? "https://media.giphy.com/media/h7Y3rfqV9qADYcOJaD/giphy.gif"
+                          : icon === '50d' || icon === '50n'
+                            ? "https://www.flaticon.com/svg/static/icons/svg/2736/2736757.svg"
+                            : icon === '01d' 
+                              ? "https://media.giphy.com/media/U5IshBeCxetWSPgC3f/giphy.gif"
+                              : "https://media.giphy.com/media/f8hNMi8xjX8fVbNhet/giphy.gif"
+                  }
+                  alt="weather condition gif icon"
+                  className="gif-icon"
                 />
               </div>
               
@@ -146,33 +142,23 @@ function App() {
               </div>
 
             </div>
-            
-            <div className="lower-container">
 
-              <div className="forecast-temp">
-                {Math.round(forecast.list[0].main.temp)}°C
-              </div>
-
-              <div className="forecast-icon">
-                <img src={ 'http://openweathermap.org/img/w/' + icon + '.png' } alt="forecast icon"/>
-              </div>
-
-              <div className="forecast-time">
-                {(forecast.list[0].dt_txt).slice(11, 16)}
-              </div>
-
-              <div className="forecast-date">
-                {((forecast.list[0].dt_txt).split('-').join('/')).slice(0, 10)}
-              </div>
-
-            </div>
-
-            <div>
-              {forecast.list.map((x) => 
-                <div>
-                  <div>{Math.round(x.main.temp)}°C</div>
-                  <div>{(x.dt_txt).slice(11, 16)}</div>
-                  <div>{(x.dt_txt).split('-').join('/').slice(0, 10)}</div>
+            <div className="bottom-slider">
+              {forecast.list.map((x) =>
+                <div className="card">
+                  <div className="forecast-temp">
+                    {Math.round(x.main.temp)}°C
+                  </div>
+                  <img 
+                    src={ 'http://openweathermap.org/img/w/' + x.weather[0].icon + '.png' }
+                    alt="forecast icon" 
+                  />
+                  <div className="forecast-time">
+                    {(x.dt_txt).slice(11, 16)}
+                  </div>
+                  <div className="forecast-date">
+                    {(x.dt_txt).split('-').join('/').slice(0, 10)}
+                  </div>
                 </div>
               )}
             </div>
