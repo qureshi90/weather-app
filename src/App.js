@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'bootstrap-4-react';
-import Carousel from 'react-bootstrap/Carousel';
+//import Carousel from 'react-bootstrap/Carousel';
 import humidity from './icons/humidity.png';
 import pressure from './icons/pressure.png';
 import wind from './icons/wind.png';
@@ -146,27 +146,68 @@ function App() {
                 <div className="forecast-data">
                   <div>{(forecast.list[0].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[0].main.temp)}°C</div>
+                  <img 
+                    src={ 'http://openweathermap.org/img/w/' + forecast.list[0].weather[0].icon + '.png' } 
+                    alt="weather icon"
+                  />
                 </div>
                 <div className="forecast-data">
                   <div>{(forecast.list[8].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[8].main.temp)}°C</div>
+                  <img 
+                    src={ 'http://openweathermap.org/img/w/' + forecast.list[8].weather[0].icon + '.png' } 
+                    alt="weather icon"
+                  />
                 </div>
                 <div className="forecast-data">
                   <div>{(forecast.list[16].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[16].main.temp)}°C</div>
+                  <img 
+                    src={ 'http://openweathermap.org/img/w/' + forecast.list[16].weather[0].icon + '.png' } 
+                    alt="weather icon"
+                  />
                 </div>
                 <div className="forecast-data">
                   <div>{(forecast.list[24].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[24].main.temp)}°C</div>
+                  <img 
+                    src={ 'http://openweathermap.org/img/w/' + forecast.list[24].weather[0].icon + '.png' } 
+                    alt="weather icon"
+                  />
                 </div>
                 <div className="forecast-data">
                   <div>{(forecast.list[32].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[32].main.temp)}°C</div>
+                  <img 
+                    src={ 'http://openweathermap.org/img/w/' + forecast.list[32].weather[0].icon + '.png' } 
+                    alt="weather icon"
+                  />
                 </div>
               </Col>
 
             </Row>
 
+            <div className="scroll">
+              {forecast.list.map((x) =>
+                <div className="forecast-card">
+                  <div className="forecast-temp">
+                    {Math.round(x.main.temp)}°C
+                  </div>
+                  <img 
+                    src={ 'http://openweathermap.org/img/w/' + x.weather[0].icon + '.png' }
+                    alt="forecast icon"
+                  />
+                  <div className="forecast-time">
+                    {(x.dt_txt).slice(11, 16)}
+                  </div>
+                  <div className="forecast-date">
+                    {(x.dt_txt).split('-').join('/').slice(0, 10)}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/*}
             <Row>
               <Carousel className="bottom-slider">
                 {forecast.list.map((x) =>
@@ -188,6 +229,7 @@ function App() {
                 )}
               </Carousel>
             </Row>
+            */}
 
           </div>
         ) : ('')}

@@ -167,15 +167,6 @@ main {
   text-align: center;
 }
 
-.bottom-slider {
-  display: flex;
-  overflow-x: auto;
-}
-
-.bottom-slider::-webkit-scrollbar {
-  display: none;
-}
-
 .card {
   text-align: center;
   padding: 10px;
@@ -207,11 +198,30 @@ img.gif-icon {
 .forecast-data {
   color: white;
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
   margin: 10px;
   font-size: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.scroll {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+.scroll .forecast-card {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
 }
