@@ -16,7 +16,6 @@ function App() {
 
   const search = (e) => {
     if (e.key === "Enter") {
-      
       Promise.all([
         fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`).then(value => value.json()),
         fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`).then(value => value.json())
