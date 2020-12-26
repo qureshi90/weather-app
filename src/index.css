@@ -191,12 +191,18 @@ img.gif-icon {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  cursor: pointer;
+}
+
+.forecast-data:hover {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .scroll {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
+  margin-top: 20px;
 }
 
 .scroll .forecast-card {

@@ -13,7 +13,7 @@ const api = {
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
-  const [icon, setIcon] = useState('');
+  //const [icon, setIcon] = useState('');
   const [forecast, setForecast] = useState({});
 
   const search = (e) => {
@@ -27,6 +27,18 @@ function App() {
           const value2 = values[1]
           //setWeather(value1);
           setWeather({
+            temp: value2.list[0].main.temp,
+            condition: value2.list[0].weather[0].main,
+            city: value2.city.name,
+            country: value2.city.country,
+            humidity: value2.list[0].main.humidity,
+            airPressure: value2.list[0].main.pressure,
+            windSpeed: value2.list[0].wind.speed,
+            date: value2.list[0].dt_txt,
+            favicon: value2.list[0].weather[0].icon
+          });
+          /*
+          setWeather({
             temp: value1.main.temp,
             condition: value1.weather[0].main,
             city: value1.name,
@@ -35,9 +47,10 @@ function App() {
             airPressure: value1.main.pressure,
             windSpeed: value1.wind.speed
           });
+          */
           setForecast(value2);
           setQuery('');
-          setIcon(value1.weather[0].icon);
+          //setIcon(value2.list[0].weather[0].icon);
           console.log(value1);
           console.log(value2);
         })
@@ -50,6 +63,77 @@ function App() {
     }
   }
 
+  const Day1 = () => {
+    setWeather({
+      temp: forecast.list[0].main.temp,
+      condition: forecast.list[0].weather[0].main,
+      city: forecast.city.name,
+      country: forecast.city.country,
+      humidity: forecast.list[0].main.humidity,
+      airPressure: forecast.list[0].main.pressure,
+      windSpeed: forecast.list[0].wind.speed,
+      date: forecast.list[0].dt_txt,
+      favicon: forecast.list[0].weather[0].icon
+    });
+  }
+
+  const Day2 = () => {
+    setWeather({
+      temp: forecast.list[8].main.temp,
+      condition: forecast.list[8].weather[0].main,
+      city: forecast.city.name,
+      country: forecast.city.country,
+      humidity: forecast.list[8].main.humidity,
+      airPressure: forecast.list[8].main.pressure,
+      windSpeed: forecast.list[8].wind.speed,
+      date: forecast.list[8].dt_txt,
+      favicon: forecast.list[8].weather[0].icon
+    });
+  }
+
+  const Day3 = () => {
+    setWeather({
+      temp: forecast.list[16].main.temp,
+      condition: forecast.list[16].weather[0].main,
+      city: forecast.city.name,
+      country: forecast.city.country,
+      humidity: forecast.list[16].main.humidity,
+      airPressure: forecast.list[16].main.pressure,
+      windSpeed: forecast.list[16].wind.speed,
+      date: forecast.list[16].dt_txt,
+      favicon: forecast.list[16].weather[0].icon
+    });
+  }
+
+  const Day4 = () => {
+    setWeather({
+      temp: forecast.list[24].main.temp,
+      condition: forecast.list[24].weather[0].main,
+      city: forecast.city.name,
+      country: forecast.city.country,
+      humidity: forecast.list[24].main.humidity,
+      airPressure: forecast.list[24].main.pressure,
+      windSpeed: forecast.list[24].wind.speed,
+      date: forecast.list[24].dt_txt,
+      favicon: forecast.list[24].weather[0].icon
+    });
+  }
+
+  const Day5 = () => {
+    setWeather({
+      temp: forecast.list[32].main.temp,
+      condition: forecast.list[32].weather[0].main,
+      city: forecast.city.name,
+      country: forecast.city.country,
+      humidity: forecast.list[32].main.humidity,
+      airPressure: forecast.list[32].main.pressure,
+      windSpeed: forecast.list[32].wind.speed,
+      date: forecast.list[32].dt_txt,
+      favicon: forecast.list[32].weather[0].icon
+    });
+  }
+
+  /*
   const dateBuilder = (d) => {
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -61,11 +145,12 @@ function App() {
 
     return `${day} ${month} ${date}, ${year}`
   }
+  */
 
   return (
     <Container fluid="sm-3" className={
-      typeof weather.main != "undefined"
-        ? weather.main.temp > 18 
+      typeof weather.temp != "undefined"
+        ? weather.temp > 18 
           ? "App hot"
           : "App cold"
         : "App"
@@ -90,7 +175,7 @@ function App() {
               <Col col="sm" className="left-container">
                 <div>
                   <img 
-                    src={ 'http://openweathermap.org/img/w/' + icon + '.png' }
+                    src={ 'http://openweathermap.org/img/w/' + weather.favicon + '.png' }
                     alt="weather condition icon" 
                     className="weather-icon"
                   />
@@ -111,23 +196,24 @@ function App() {
                 </div>
 
                 <div className="date">
-                  {dateBuilder(new Date())}
+                  {/*{dateBuilder(new Date())}*/}
+                  {(weather.date).slice(0, 10)}
                 </div>
               </Col>
 
               <Col col="sm" className="gif-animation">
                 <img 
-                  src={ icon === '02d' || icon === '02n' || icon === '03d' || icon === '03n' || icon === '04d' || icon === '04n' 
+                  src={ weather.favicon === '02d' || weather.favicon === '02n' || weather.favicon === '03d' || weather.favicon === '03n' || weather.favicon === '04d' || weather.favicon === '04n' 
                     ? "https://media.giphy.com/media/Qrdep630dyOucGsEsB/giphy.gif"
-                    : icon === '09d' || icon === '09n' || icon === '10d' || icon === '10n'
+                    : weather.favicon === '09d' || weather.favicon === '09n' || weather.favicon === '10d' || weather.favicon === '10n'
                       ? "https://media.giphy.com/media/MDaMURfqSp7H1mQ1Ga/giphy.gif"
-                      : icon === '11d' || icon === '11n'
+                      : weather.favicon === '11d' || weather.favicon === '11n'
                         ? "https://media.giphy.com/media/gdNti10T5nbcnOkIIg/giphy.gif"
-                        : icon === '13d' || icon === '13n'
+                        : weather.favicon === '13d' || weather.favicon === '13n'
                           ? "https://media.giphy.com/media/h7Y3rfqV9qADYcOJaD/giphy.gif"
-                          : icon === '50d' || icon === '50n'
+                          : weather.favicon === '50d' || weather.favicon === '50n'
                             ? "https://www.flaticon.com/svg/static/icons/svg/2736/2736757.svg"
-                            : icon === '01d' 
+                            : weather.favicon === '01d' 
                               ? "https://media.giphy.com/media/U5IshBeCxetWSPgC3f/giphy.gif"
                               : "https://media.giphy.com/media/f8hNMi8xjX8fVbNhet/giphy.gif"
                   }
@@ -161,7 +247,8 @@ function App() {
 
               
               <Col col="sm">
-                <div className="forecast-data">
+
+                <div className="forecast-data" onClick={Day1}>
                   <div>{(forecast.list[0].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[0].main.temp)}°C</div>
                   <img 
@@ -169,7 +256,8 @@ function App() {
                     alt="weather icon"
                   />
                 </div>
-                <div className="forecast-data">
+
+                <div className="forecast-data" onClick={Day2}>
                   <div>{(forecast.list[8].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[8].main.temp)}°C</div>
                   <img 
@@ -177,7 +265,8 @@ function App() {
                     alt="weather icon"
                   />
                 </div>
-                <div className="forecast-data">
+
+                <div className="forecast-data" onClick={Day3}>
                   <div>{(forecast.list[16].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[16].main.temp)}°C</div>
                   <img 
@@ -185,7 +274,8 @@ function App() {
                     alt="weather icon"
                   />
                 </div>
-                <div className="forecast-data">
+
+                <div className="forecast-data" onClick={Day4}>
                   <div>{(forecast.list[24].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[24].main.temp)}°C</div>
                   <img 
@@ -193,7 +283,8 @@ function App() {
                     alt="weather icon"
                   />
                 </div>
-                <div className="forecast-data">
+
+                <div className="forecast-data" onClick={Day5}>
                   <div>{(forecast.list[32].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[32].main.temp)}°C</div>
                   <img 
@@ -201,6 +292,7 @@ function App() {
                     alt="weather icon"
                   />
                 </div>
+
               </Col>
 
             </Row>
