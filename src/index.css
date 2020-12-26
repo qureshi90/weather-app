@@ -53,7 +53,6 @@ main {
   border: none;
   outline: none;
   border-radius: 30px;
-  box-shadow: 0px 5px rgba(0, 0, 0, 0.4);
   background: rgba(255, 255, 255, 0.5);
   transition: 0.4s ease;
 }
@@ -62,18 +61,18 @@ main {
   background-color: white;
 }
 
+/*
 .main-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+*/
 
 .left-container {
   color: white;
   font-size: 40px;
   text-align: center;
-  text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
-  font-weight: bold;
 }
 
 .left-container .weather-icon {
@@ -84,7 +83,6 @@ main {
   color : white;
   font-size: 20px;
   text-align: center;
-  text-shadow: 3px 3px rgba(55, 55, 55, 0.7)
 }
 
 .left-container .temperature {
@@ -93,53 +91,41 @@ main {
   margin: 10px auto;
   padding: 15px 25px;
   font-size: 100px;
-  font-weight: bold;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
-  box-shadow: 3px 3px rgba(55, 55, 55, 0.7);
-  text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
 }
 
 .left-container .weather {
   color: white;
   font-size: 40px;
   font-weight: bold;
-  text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
 }
 
 .right-container {
-  text-align: center;
-  margin-right: 50px;
   margin-top: 20px;
 }
 
 .right-container .humidity {
   color: white;
   font-size: 30px;
-  font-weight: bold;
-  text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
   padding: 10px;
 }
 
 .right-container .pressure {
   color: white;
   font-size: 30px;
-  font-weight: bold;
-  text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
   padding: 10px;
 }
 
 .right-container .wind {
   color: white;
   font-size: 30px;
-  font-weight: bold;
-  text-shadow: 3px 3px rgba(55, 55, 55, 0.7);
   padding: 10px;
 }
 
 .right-container .icons {
   width: 88px;
-  height: auto;
+  height: 88px;
   margin: 5px;
   padding: 5px;
 }
@@ -152,34 +138,26 @@ main {
 .bottom-slider .forecast-temp {
   color: white;
   font-size: 30px;
+  text-align: center;
 }
 
 .bottom-slider .forecast-time {
   color: white;
   font-size: 25px;
+  text-align: center;
 }
 
 .bottom-slider .forecast-date {
   color: white;
   font-size: 20px;
-}
-
-.bottom-slider {
-  display: flex;
-  overflow-x: auto;
-}
-
-.bottom-slider::-webkit-scrollbar {
-  display: none;
+  text-align: center;
 }
 
 .card {
   text-align: center;
   padding: 10px;
   margin: 5px;
-  color: white;
   font-size: 25px;
-  background-color:rgba(255, 255, 255, 0.2);
   border-radius: 10px;
 }
 
@@ -190,4 +168,46 @@ main {
 
 img.gif-icon {
   width: 400px;
+}
+
+.small-text {
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .gif-animation {
+    display: none;
+  }
+}
+
+.forecast-data {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.scroll {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+.scroll .forecast-card {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
 }
