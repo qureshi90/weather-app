@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'bootstrap-4-react';
-//import Carousel from 'react-bootstrap/Carousel';
 import humidity from './icons/humidity.png';
 import pressure from './icons/pressure.png';
 import wind from './icons/wind.png';
@@ -13,7 +12,6 @@ const api = {
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
-  //const [icon, setIcon] = useState('');
   const [forecast, setForecast] = useState({});
 
   const search = (e) => {
@@ -25,7 +23,6 @@ function App() {
         .then((values) => {
           const value1 = values[0]
           const value2 = values[1]
-          //setWeather(value1);
           setWeather({
             temp: value2.list[0].main.temp,
             condition: value2.list[0].weather[0].main,
@@ -39,7 +36,6 @@ function App() {
           });
           setForecast(value2);
           setQuery('');
-          //setIcon(value2.list[0].weather[0].icon);
           console.log(value1);
           console.log(value2);
         })
@@ -107,17 +103,14 @@ function App() {
                 </div>
 
                 <div className="temperature">
-                  {/*{Math.round(weather.main.temp)}°C*/}
                   {Math.round(weather.temp)}°C
                 </div>
 
                 <div className="location">
-                  {/*{weather.name}, {weather.sys.country}*/}
                   {weather.city}, {weather.country}
                 </div>
 
                 <div className="date">
-                  {/*{dateBuilder(new Date())}*/}
                   {(weather.date).slice(0, 10)}
                 </div>
               </Col>
