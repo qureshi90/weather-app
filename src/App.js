@@ -63,6 +63,23 @@ function App() {
     }
   }
 
+  function Day(a) {
+    return(
+      setWeather({
+        temp: forecast.list[a].main.temp,
+        condition: forecast.list[a].weather[0].main,
+        city: forecast.city.name,
+        country: forecast.city.country,
+        humidity: forecast.list[a].main.humidity,
+        airPressure: forecast.list[a].main.pressure,
+        windSpeed: forecast.list[a].wind.speed,
+        date: forecast.list[a].dt_txt,
+        favicon: forecast.list[a].weather[0].icon
+      })
+    )
+  }
+
+  /*
   const Day1 = () => {
     setWeather({
       temp: forecast.list[0].main.temp,
@@ -132,6 +149,7 @@ function App() {
       favicon: forecast.list[32].weather[0].icon
     });
   }
+  */
 
   /*
   const dateBuilder = (d) => {
@@ -248,7 +266,7 @@ function App() {
               
               <Col col="sm">
 
-                <div className="forecast-data" onClick={Day1}>
+                <div className="forecast-data" onClick={() => Day(0)}>
                   <div>{(forecast.list[0].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[0].main.temp)}°C</div>
                   <img 
@@ -257,7 +275,7 @@ function App() {
                   />
                 </div>
 
-                <div className="forecast-data" onClick={Day2}>
+                <div className="forecast-data" onClick={() => Day(8)}>
                   <div>{(forecast.list[8].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[8].main.temp)}°C</div>
                   <img 
@@ -266,7 +284,7 @@ function App() {
                   />
                 </div>
 
-                <div className="forecast-data" onClick={Day3}>
+                <div className="forecast-data" onClick={() => Day(16)}>
                   <div>{(forecast.list[16].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[16].main.temp)}°C</div>
                   <img 
@@ -275,7 +293,7 @@ function App() {
                   />
                 </div>
 
-                <div className="forecast-data" onClick={Day4}>
+                <div className="forecast-data" onClick={() => Day(24)}>
                   <div>{(forecast.list[24].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[24].main.temp)}°C</div>
                   <img 
@@ -284,7 +302,7 @@ function App() {
                   />
                 </div>
 
-                <div className="forecast-data" onClick={Day5}>
+                <div className="forecast-data" onClick={() => Day(32)}>
                   <div>{(forecast.list[32].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[32].main.temp)}°C</div>
                   <img 
