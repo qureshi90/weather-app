@@ -221,6 +221,28 @@ function App() {
 
               <Col col="sm" className="gif-animation">
                 <img 
+                  src={ ["02d", "02n", "03d", "03n", "04d", "04n"].includes(weather.favicon)  
+                    ? "https://media.giphy.com/media/Qrdep630dyOucGsEsB/giphy.gif"
+                    : ["09d", "09n", "10d", "10n"].includes(weather.favicon)
+                      ? "https://media.giphy.com/media/MDaMURfqSp7H1mQ1Ga/giphy.gif"
+                      : ["11d", "11n"].includes(weather.favicon)
+                        ? "https://media.giphy.com/media/gdNti10T5nbcnOkIIg/giphy.gif"
+                        : ["13d", "13n"].includes(weather.favicon)
+                          ? "https://media.giphy.com/media/h7Y3rfqV9qADYcOJaD/giphy.gif"
+                          : ["50d", "50n"].includes(weather.favicon)
+                            ? "https://www.flaticon.com/svg/static/icons/svg/2736/2736757.svg"
+                            : ["01d"].includes(weather.favicon) 
+                              ? "https://media.giphy.com/media/U5IshBeCxetWSPgC3f/giphy.gif"
+                              : "https://media.giphy.com/media/f8hNMi8xjX8fVbNhet/giphy.gif"
+                  }
+                  alt="weather condition gif icon"
+                  className="gif-icon"
+                />
+              </Col>
+
+              {/*
+              <Col col="sm" className="gif-animation">
+                <img 
                   src={ weather.favicon === '02d' || weather.favicon === '02n' || weather.favicon === '03d' || weather.favicon === '03n' || weather.favicon === '04d' || weather.favicon === '04n' 
                     ? "https://media.giphy.com/media/Qrdep630dyOucGsEsB/giphy.gif"
                     : weather.favicon === '09d' || weather.favicon === '09n' || weather.favicon === '10d' || weather.favicon === '10n'
@@ -239,6 +261,7 @@ function App() {
                   className="gif-icon"
                 />
               </Col>
+              */}
               
               <Col col="sm" className="right-container">
                 <div className="i-container">
