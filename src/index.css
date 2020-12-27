@@ -61,14 +61,6 @@ main {
   background-color: white;
 }
 
-/*
-.main-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-*/
-
 .left-container {
   color: white;
   font-size: 40px;

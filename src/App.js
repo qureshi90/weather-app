@@ -37,17 +37,6 @@ function App() {
             date: value2.list[0].dt_txt,
             favicon: value2.list[0].weather[0].icon
           });
-          /*
-          setWeather({
-            temp: value1.main.temp,
-            condition: value1.weather[0].main,
-            city: value1.name,
-            country: value1.sys.country,
-            humidity: value1.main.humidity,
-            airPressure: value1.main.pressure,
-            windSpeed: value1.wind.speed
-          });
-          */
           setForecast(value2);
           setQuery('');
           //setIcon(value2.list[0].weather[0].icon);
@@ -78,92 +67,6 @@ function App() {
       })
     )
   }
-
-  /*
-  const Day1 = () => {
-    setWeather({
-      temp: forecast.list[0].main.temp,
-      condition: forecast.list[0].weather[0].main,
-      city: forecast.city.name,
-      country: forecast.city.country,
-      humidity: forecast.list[0].main.humidity,
-      airPressure: forecast.list[0].main.pressure,
-      windSpeed: forecast.list[0].wind.speed,
-      date: forecast.list[0].dt_txt,
-      favicon: forecast.list[0].weather[0].icon
-    });
-  }
-
-  const Day2 = () => {
-    setWeather({
-      temp: forecast.list[8].main.temp,
-      condition: forecast.list[8].weather[0].main,
-      city: forecast.city.name,
-      country: forecast.city.country,
-      humidity: forecast.list[8].main.humidity,
-      airPressure: forecast.list[8].main.pressure,
-      windSpeed: forecast.list[8].wind.speed,
-      date: forecast.list[8].dt_txt,
-      favicon: forecast.list[8].weather[0].icon
-    });
-  }
-
-  const Day3 = () => {
-    setWeather({
-      temp: forecast.list[16].main.temp,
-      condition: forecast.list[16].weather[0].main,
-      city: forecast.city.name,
-      country: forecast.city.country,
-      humidity: forecast.list[16].main.humidity,
-      airPressure: forecast.list[16].main.pressure,
-      windSpeed: forecast.list[16].wind.speed,
-      date: forecast.list[16].dt_txt,
-      favicon: forecast.list[16].weather[0].icon
-    });
-  }
-
-  const Day4 = () => {
-    setWeather({
-      temp: forecast.list[24].main.temp,
-      condition: forecast.list[24].weather[0].main,
-      city: forecast.city.name,
-      country: forecast.city.country,
-      humidity: forecast.list[24].main.humidity,
-      airPressure: forecast.list[24].main.pressure,
-      windSpeed: forecast.list[24].wind.speed,
-      date: forecast.list[24].dt_txt,
-      favicon: forecast.list[24].weather[0].icon
-    });
-  }
-
-  const Day5 = () => {
-    setWeather({
-      temp: forecast.list[32].main.temp,
-      condition: forecast.list[32].weather[0].main,
-      city: forecast.city.name,
-      country: forecast.city.country,
-      humidity: forecast.list[32].main.humidity,
-      airPressure: forecast.list[32].main.pressure,
-      windSpeed: forecast.list[32].wind.speed,
-      date: forecast.list[32].dt_txt,
-      favicon: forecast.list[32].weather[0].icon
-    });
-  }
-  */
-
-  /*
-  const dateBuilder = (d) => {
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-    let day = days[d.getDay()];
-    let date = d.getDate();
-    let month = months[d.getMonth()];
-    let year = d.getFullYear();
-
-    return `${day} ${month} ${date}, ${year}`
-  }
-  */
 
   return (
     <Container fluid="sm-3" className={
@@ -239,29 +142,6 @@ function App() {
                   className="gif-icon"
                 />
               </Col>
-
-              {/*
-              <Col col="sm" className="gif-animation">
-                <img 
-                  src={ weather.favicon === '02d' || weather.favicon === '02n' || weather.favicon === '03d' || weather.favicon === '03n' || weather.favicon === '04d' || weather.favicon === '04n' 
-                    ? "https://media.giphy.com/media/Qrdep630dyOucGsEsB/giphy.gif"
-                    : weather.favicon === '09d' || weather.favicon === '09n' || weather.favicon === '10d' || weather.favicon === '10n'
-                      ? "https://media.giphy.com/media/MDaMURfqSp7H1mQ1Ga/giphy.gif"
-                      : weather.favicon === '11d' || weather.favicon === '11n'
-                        ? "https://media.giphy.com/media/gdNti10T5nbcnOkIIg/giphy.gif"
-                        : weather.favicon === '13d' || weather.favicon === '13n'
-                          ? "https://media.giphy.com/media/h7Y3rfqV9qADYcOJaD/giphy.gif"
-                          : weather.favicon === '50d' || weather.favicon === '50n'
-                            ? "https://www.flaticon.com/svg/static/icons/svg/2736/2736757.svg"
-                            : weather.favicon === '01d' 
-                              ? "https://media.giphy.com/media/U5IshBeCxetWSPgC3f/giphy.gif"
-                              : "https://media.giphy.com/media/f8hNMi8xjX8fVbNhet/giphy.gif"
-                  }
-                  alt="weather condition gif icon"
-                  className="gif-icon"
-                />
-              </Col>
-              */}
               
               <Col col="sm" className="right-container">
                 <div className="i-container">
@@ -357,30 +237,6 @@ function App() {
                 </div>
               )}
             </div>
-
-            {/*}
-            <Row>
-              <Carousel className="bottom-slider">
-                {forecast.list.map((x) =>
-                  <Carousel.Item>
-                    <div className="forecast-temp">
-                      {Math.round(x.main.temp)}°C
-                    </div>
-                    <img 
-                      src={ 'http://openweathermap.org/img/w/' + x.weather[0].icon + '.png' }
-                      alt="forecast icon"
-                    />
-                    <div className="forecast-time">
-                      {(x.dt_txt).slice(11, 16)}
-                    </div>
-                    <div className="forecast-date">
-                      {(x.dt_txt).split('-').join('/').slice(0, 10)}
-                    </div>
-                  </Carousel.Item>
-                )}
-              </Carousel>
-            </Row>
-            */}
 
           </div>
         ) : ('')}
