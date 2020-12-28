@@ -147,21 +147,21 @@ function App() {
                 <div className="i-container">
                   <img src={humidity} alt="humidity icon" className="icons" />
                   <div className="humidity">
-                    <span className="small-text">Humidity</span> <br/> {weather.humidity}% {/*{weather.main.humidity}%*/}
+                    <span className="small-text">Humidity</span> <br/> {weather.humidity}%
                   </div>
                 </div>
 
                 <div className="i-container">
                   <img src={pressure} alt="pressure icon" className="icons" />
                   <div className="pressure">
-                    <span className="small-text">Pressure</span> <br/> {weather.airPressure} mBar {/*{weather.main.pressure} mBar*/}
+                    <span className="small-text">Pressure</span> <br/> {weather.airPressure} mBar
                   </div>
                 </div>
 
                 <div className="i-container">
                   <img src={wind} alt="wind icon" className="icons" />
                   <div className="wind">
-                    <span className="small-text">Wind</span> <br/> {Math.round((weather.windSpeed) * 15/8)} km/h {/*{Math.round((weather.wind.speed) * 15/8 )}*/}
+                    <span className="small-text">Wind</span> <br/> {Math.round((weather.windSpeed) * 15/8)} km/h
                   </div>
                 </div>
               </Col>
