@@ -13,6 +13,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
   const [forecast, setForecast] = useState({});
+  const [error, setError] = useState(false);
 
   const search = (e) => {
     if (e.key === "Enter") {
@@ -36,14 +37,15 @@ function App() {
           });
           setForecast(value2);
           setQuery('');
+          setError(false);
           console.log(value1);
           console.log(value2);
         })
         .catch( err => {
-          console.log('error');
-          alert("Error! Enter city name again...");
+          setError(true);
           setQuery('');
-          } 
+          setWeather({});
+          }
         )
     }
   }
@@ -85,7 +87,7 @@ function App() {
           />
         </Row>
 
-        {(typeof weather != "undefined") && (typeof forecast.city != "undefined") ? (
+        { error ? <div className="error-message alert alert-warning">Error! Incorrect City name.</div> : (typeof weather != "undefined") && (typeof forecast.city != "undefined") ? (
           <div className="window">
             <Row className="d-flex justify-content-between">
 

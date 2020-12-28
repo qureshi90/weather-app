@@ -209,3 +209,8 @@ img.gif-icon {
 .scroll::-webkit-scrollbar {
   display: none;
 }
+
+.error-message {
+  text-align: center;
+  font-size: 30px;
+}
