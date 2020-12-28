@@ -33,7 +33,9 @@ function App() {
             airPressure: value2.list[0].main.pressure,
             windSpeed: value2.list[0].wind.speed,
             date: value2.list[0].dt_txt,
-            favicon: value2.list[0].weather[0].icon
+            favicon: value2.list[0].weather[0].icon,
+            start: 0,
+            end: 8
           });
           setForecast(value2);
           setQuery('');
@@ -61,7 +63,9 @@ function App() {
         airPressure: forecast.list[a].main.pressure,
         windSpeed: forecast.list[a].wind.speed,
         date: forecast.list[a].dt_txt,
-        favicon: forecast.list[a].weather[0].icon
+        favicon: forecast.list[a].weather[0].icon,
+        start: a,
+        end: a+8
       })
     )
   }
@@ -87,7 +91,8 @@ function App() {
           />
         </Row>
 
-        { error ? <div className="error-message alert alert-warning">Error! Incorrect City name.</div> : (typeof weather != "undefined") && (typeof forecast.city != "undefined") ? (
+        { error ? <div className="error-message">Error! Incorrect City name.</div> 
+          : (typeof weather != "undefined") && (typeof forecast.city != "undefined") ? (
           <div className="window">
             <Row className="d-flex justify-content-between">
 
@@ -161,7 +166,6 @@ function App() {
                 </div>
               </Col>
 
-              
               <Col col="sm">
 
                 <div className="forecast-data" onClick={() => Day(0)}>
@@ -214,23 +218,28 @@ function App() {
             </Row>
 
             <div className="scroll">
-              {forecast.list.map((x) =>
-                <div className="forecast-card">
-                  <div className="forecast-temp">
-                    {Math.round(x.main.temp)}°C
+              { forecast.list.filter(
+                  function(place, index){
+                    return index >= weather.start && index < weather.end ;
+                  }
+                ).map((x) =>
+                  <div className="forecast-card">
+                    <div className="forecast-temp">
+                      {Math.round(x.main.temp)}°C
+                    </div>
+                    <img 
+                      src={ 'http://openweathermap.org/img/w/' + x.weather[0].icon + '.png' }
+                      alt="forecast icon"
+                    />
+                    <div className="forecast-time">
+                      {(x.dt_txt).slice(11, 16)}
+                    </div>
+                    <div className="forecast-date">
+                      {(x.dt_txt).split('-').join('/').slice(0, 10)}
+                    </div>
                   </div>
-                  <img 
-                    src={ 'http://openweathermap.org/img/w/' + x.weather[0].icon + '.png' }
-                    alt="forecast icon"
-                  />
-                  <div className="forecast-time">
-                    {(x.dt_txt).slice(11, 16)}
-                  </div>
-                  <div className="forecast-date">
-                    {(x.dt_txt).split('-').join('/').slice(0, 10)}
-                  </div>
-                </div>
-              )}
+                )
+              }
             </div>
 
           </div>
