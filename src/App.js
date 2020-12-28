@@ -53,6 +53,7 @@ function App() {
   }
 
   function Day(a) {
+    a = (a - 1) * 8;
     return(
       setWeather({
         temp: forecast.list[a].main.temp,
@@ -73,7 +74,7 @@ function App() {
   return (
     <Container fluid="sm-3" className={
       typeof weather.temp != "undefined"
-        ? weather.temp > 18 
+        ? weather.temp > 18
           ? "App hot"
           : "App cold"
         : "App"
@@ -81,7 +82,7 @@ function App() {
     >
       <main>
         <Row className="search-container">
-          <input 
+          <input
             type="text"
             className="search-bar"
             placeholder="Enter City Name..."
@@ -91,16 +92,16 @@ function App() {
           />
         </Row>
 
-        { error ? <div className="error-message">Error! Incorrect City name.</div> 
+        { error ? <div className="error-message">Error! Incorrect City name.</div>
           : (typeof weather != "undefined") && (typeof forecast.city != "undefined") ? (
           <div className="window">
             <Row className="d-flex justify-content-between">
 
               <Col col="sm" className="left-container">
                 <div>
-                  <img 
+                  <img
                     src={ 'http://openweathermap.org/img/w/' + weather.favicon + '.png' }
-                    alt="weather condition icon" 
+                    alt="weather condition icon"
                     className="weather-icon"
                   />
                 </div>
@@ -123,8 +124,8 @@ function App() {
               </Col>
 
               <Col col="sm" className="gif-animation">
-                <img 
-                  src={ ["02d", "02n", "03d", "03n", "04d", "04n"].includes(weather.favicon)  
+                <img
+                  src={ ["02d", "02n", "03d", "03n", "04d", "04n"].includes(weather.favicon)
                     ? "https://media.giphy.com/media/Qrdep630dyOucGsEsB/giphy.gif"
                     : ["09d", "09n", "10d", "10n"].includes(weather.favicon)
                       ? "https://media.giphy.com/media/MDaMURfqSp7H1mQ1Ga/giphy.gif"
@@ -134,7 +135,7 @@ function App() {
                           ? "https://media.giphy.com/media/h7Y3rfqV9qADYcOJaD/giphy.gif"
                           : ["50d", "50n"].includes(weather.favicon)
                             ? "https://www.flaticon.com/svg/static/icons/svg/2736/2736757.svg"
-                            : ["01d"].includes(weather.favicon) 
+                            : ["01d"].includes(weather.favicon)
                               ? "https://media.giphy.com/media/U5IshBeCxetWSPgC3f/giphy.gif"
                               : "https://media.giphy.com/media/f8hNMi8xjX8fVbNhet/giphy.gif"
                   }
@@ -142,7 +143,7 @@ function App() {
                   className="gif-icon"
                 />
               </Col>
-              
+
               <Col col="sm" className="right-container">
                 <div className="i-container">
                   <img src={humidity} alt="humidity icon" className="icons" />
@@ -168,47 +169,47 @@ function App() {
 
               <Col col="sm">
 
-                <div className="forecast-data" onClick={() => Day(0)}>
+                <div className="forecast-data" onClick={() => Day(1)}>
                   <div>{(forecast.list[0].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[0].main.temp)}°C</div>
-                  <img 
-                    src={ 'http://openweathermap.org/img/w/' + forecast.list[0].weather[0].icon + '.png' } 
+                  <img
+                    src={ 'http://openweathermap.org/img/w/' + forecast.list[0].weather[0].icon + '.png' }
                     alt="weather icon"
                   />
                 </div>
 
-                <div className="forecast-data" onClick={() => Day(8)}>
+                <div className="forecast-data" onClick={() => Day(2)}>
                   <div>{(forecast.list[8].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[8].main.temp)}°C</div>
-                  <img 
-                    src={ 'http://openweathermap.org/img/w/' + forecast.list[8].weather[0].icon + '.png' } 
+                  <img
+                    src={ 'http://openweathermap.org/img/w/' + forecast.list[8].weather[0].icon + '.png' }
                     alt="weather icon"
                   />
                 </div>
 
-                <div className="forecast-data" onClick={() => Day(16)}>
+                <div className="forecast-data" onClick={() => Day(3)}>
                   <div>{(forecast.list[16].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[16].main.temp)}°C</div>
-                  <img 
-                    src={ 'http://openweathermap.org/img/w/' + forecast.list[16].weather[0].icon + '.png' } 
+                  <img
+                    src={ 'http://openweathermap.org/img/w/' + forecast.list[16].weather[0].icon + '.png' }
                     alt="weather icon"
                   />
                 </div>
 
-                <div className="forecast-data" onClick={() => Day(24)}>
+                <div className="forecast-data" onClick={() => Day(4)}>
                   <div>{(forecast.list[24].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[24].main.temp)}°C</div>
-                  <img 
-                    src={ 'http://openweathermap.org/img/w/' + forecast.list[24].weather[0].icon + '.png' } 
+                  <img
+                    src={ 'http://openweathermap.org/img/w/' + forecast.list[24].weather[0].icon + '.png' }
                     alt="weather icon"
                   />
                 </div>
 
-                <div className="forecast-data" onClick={() => Day(32)}>
+                <div className="forecast-data" onClick={() => Day(5)}>
                   <div>{(forecast.list[32].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[32].main.temp)}°C</div>
-                  <img 
-                    src={ 'http://openweathermap.org/img/w/' + forecast.list[32].weather[0].icon + '.png' } 
+                  <img
+                    src={ 'http://openweathermap.org/img/w/' + forecast.list[32].weather[0].icon + '.png' }
                     alt="weather icon"
                   />
                 </div>
@@ -227,7 +228,7 @@ function App() {
                     <div className="forecast-temp">
                       {Math.round(x.main.temp)}°C
                     </div>
-                    <img 
+                    <img
                       src={ 'http://openweathermap.org/img/w/' + x.weather[0].icon + '.png' }
                       alt="forecast icon"
                     />
