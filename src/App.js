@@ -35,7 +35,8 @@ function App() {
             date: value2.list[0].dt_txt,
             favicon: value2.list[0].weather[0].icon,
             start: 0,
-            end: 8
+            end: 8,
+            toggle: 0
           });
           setForecast(value2);
           setQuery('');
@@ -43,7 +44,7 @@ function App() {
           console.log(value1);
           console.log(value2);
         })
-        .catch( err => {
+        .catch(() => {
           setError(true);
           setQuery('');
           setWeather({});
@@ -66,7 +67,8 @@ function App() {
         date: forecast.list[a].dt_txt,
         favicon: forecast.list[a].weather[0].icon,
         start: a,
-        end: a+8
+        end: a+8,
+        toggle: a
       })
     )
   }
@@ -169,7 +171,7 @@ function App() {
 
               <Col col="sm">
 
-                <div className="forecast-data" onClick={() => Day(1)}>
+                <div className={ weather.toggle === 0 ? "active forecast-data" : "forecast-data" } onClick={() => Day(1)}>
                   <div>{(forecast.list[0].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[0].main.temp)}°C</div>
                   <img
@@ -178,7 +180,7 @@ function App() {
                   />
                 </div>
 
-                <div className="forecast-data" onClick={() => Day(2)}>
+                <div className={ weather.toggle === 8 ? "active forecast-data" : "forecast-data" } onClick={() => Day(2)}>
                   <div>{(forecast.list[8].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[8].main.temp)}°C</div>
                   <img
@@ -187,7 +189,7 @@ function App() {
                   />
                 </div>
 
-                <div className="forecast-data" onClick={() => Day(3)}>
+                <div className={ weather.toggle === 16 ? "active forecast-data" : "forecast-data" } onClick={() => Day(3)}>
                   <div>{(forecast.list[16].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[16].main.temp)}°C</div>
                   <img
@@ -196,7 +198,7 @@ function App() {
                   />
                 </div>
 
-                <div className="forecast-data" onClick={() => Day(4)}>
+                <div className={ weather.toggle === 24 ? "active forecast-data" : "forecast-data" } onClick={() => Day(4)}>
                   <div>{(forecast.list[24].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[24].main.temp)}°C</div>
                   <img
@@ -205,7 +207,7 @@ function App() {
                   />
                 </div>
 
-                <div className="forecast-data" onClick={() => Day(5)}>
+                <div className={ weather.toggle === 32 ? "active forecast-data" : "forecast-data" } onClick={() => Day(5)}>
                   <div>{(forecast.list[32].dt_txt).split('-').join('/').slice(5, 10)}</div>
                   <div>{Math.round(forecast.list[32].main.temp)}°C</div>
                   <img
