@@ -245,6 +245,30 @@ function App() {
               }
             </div>
 
+            {/*}
+            <Row>
+              <Carousel className="bottom-slider">
+                {forecast.list.map((x) =>
+                  <Carousel.Item>
+                    <div className="forecast-temp">
+                      {Math.round(x.main.temp)}°C
+                    </div>
+                    <img 
+                      src={ 'http://openweathermap.org/img/w/' + x.weather[0].icon + '.png' }
+                      alt="forecast icon"
+                    />
+                    <div className="forecast-time">
+                      {(x.dt_txt).slice(11, 16)}
+                    </div>
+                    <div className="forecast-date">
+                      {(x.dt_txt).split('-').join('/').slice(0, 10)}
+                    </div>
+                  </Carousel.Item>
+                )}
+              </Carousel>
+            </Row>
+            */}
+
           </div>
         ) : ('')}
       </main>
